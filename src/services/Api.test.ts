@@ -31,4 +31,23 @@ describe('Api Service', () => {
 
     expect(fetchMock).toHaveBeenCalledWith(parsedUrl.toString(), undefined);
   });
+
+  it('should make a successful POST request', () => {
+    fetchMock.mockResponse(JSON.stringify({ success: 'ok' }));
+
+    const url = 'https://whatever.com/';
+
+    const apiService = new ApiService();
+    const options = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    apiService.post(url, {}, options);
+
+    expect(fetchMock).toHaveBeenCalledWith(url, {
+      method: 'POST',
+      ...options,
+    });
+  });
 });
