@@ -63,5 +63,6 @@
   },
   "jest": {
     "resetMocks": false
-  }
+  },
+  "proxy": "https://api.textrazor.com/"
 }
