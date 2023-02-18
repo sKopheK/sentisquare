@@ -1,5 +1,5 @@
 import { TEXTRAZOR } from 'apiKeys';
-import { NlpEntity } from 'components/App.types';
+import { NlpEntity } from 'components/types';
 import TextRazor from './TextRazor';
 
 describe('TextRazor service', () => {

@@ -1,5 +1,5 @@
-import { ActionType } from './App.constants';
-import { AppReducer } from './App.types';
+import { ActionType } from './constants';
+import { AppReducer } from './types';
 
 const appReducer: AppReducer = (state, [type, payload]) => {
   switch (type) {

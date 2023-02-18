@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import AppContextProvider from './App.context';
+import AppContextProvider from './context';
 import Layout from './Layout';
 
 const App: FC = (): JSX.Element => {
