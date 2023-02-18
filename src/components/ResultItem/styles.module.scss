@@ -1,0 +1,5 @@
+.active {
+  --bs-table-accent-bg: var(--bs-table-hover-bg);
+  --bs-table-striped-bg: var(--bs-table-hover-bg);
+  color: var(--bs-table-hover-color);
+}

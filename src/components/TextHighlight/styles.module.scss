@@ -1,0 +1,7 @@
+.entity {
+  &:not(.active) {
+    background-color: transparent;
+    color: inherit;
+    text-decoration: underline;
+  }
+}

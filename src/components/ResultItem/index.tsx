@@ -1,12 +1,28 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
+
 import Accordion from 'react-bootstrap/Accordion';
 import Table from 'react-bootstrap/Table';
+
+import { NlpEntity } from 'components/types';
 import { ResultItemProps } from './types';
 
+import TextHighlight from 'components/TextHighlight';
+
+import styles from './styles.module.scss';
+
 const ResultItem: FC<ResultItemProps> = ({ text, entities }) => {
+  const [highlightedEntity, setHighlightedEntity] = useState<NlpEntity>();
+
   return (
     <Accordion.Item eventKey={text}>
-      <Accordion.Header>{text}</Accordion.Header>
+      <Accordion.Header>
+        <TextHighlight
+          content={text}
+          entities={entities}
+          highlightedEntity={highlightedEntity}
+          setHighlightedEntity={setHighlightedEntity}
+        />
+      </Accordion.Header>
       <Accordion.Body>
         {entities.length === 0 ? (
           <p>No entities discovered.</p>
@@ -24,7 +40,12 @@ const ResultItem: FC<ResultItemProps> = ({ text, entities }) => {
             </thead>
             <tbody>
               {entities.map((entity) => (
-                <tr key={entity.id}>
+                <tr
+                  key={entity.id}
+                  onMouseEnter={() => setHighlightedEntity(entity)}
+                  onMouseLeave={() => setHighlightedEntity(undefined)}
+                  className={highlightedEntity === entity ? styles.active : ''}
+                >
                   <td>{entity.id}</td>
                   <td>{entity.entityId}</td>
                   <td>
