@@ -1,3 +1,4 @@
+import { NlpEntity } from 'components/App.types';
 import ApiService from './Api';
 
 class TextRazor {
@@ -13,7 +14,7 @@ class TextRazor {
     return this.apiService.post(
       '/',
       {
-        text: encodeURIComponent(data),
+        text: data,
         extractors: 'entities',
       },
       {
@@ -23,6 +24,28 @@ class TextRazor {
         },
       }
     );
+  }
+
+  async getTextEntities(file: AsyncGenerator<string>) {
+    const entities = new Map<string, NlpEntity[]>();
+    for await (const line of file) {
+      const result = await this.processData(line);
+      if (!line.trim()) continue;
+      if (
+        !result.ok ||
+        !result.response ||
+        !Array.isArray(result.response.entities)
+      ) {
+        console.error('Error processing file on line: ' + line);
+        continue;
+      }
+      result.response.entities.forEach((entity: NlpEntity) =>
+        entities.set(line, [...(entities.get(line) ?? []), entity])
+      );
+      // TODO
+      if (entities.size >= 2) break;
+    }
+    return entities;
   }
 }
 
