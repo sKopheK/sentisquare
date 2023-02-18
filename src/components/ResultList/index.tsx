@@ -5,6 +5,7 @@ import Accordion from 'react-bootstrap/Accordion';
 
 import { AppContext } from '../context';
 
+import * as Graph from 'components/Graphs';
 import ResultItem from 'components/ResultItem';
 
 const ResultList: FC = () => {
@@ -15,11 +16,20 @@ const ResultList: FC = () => {
   return (
     <>
       {resultData.size > 0 ? (
-        <Accordion>
-          {[...resultData].map(([sentence, resultItem]) => (
-            <ResultItem key={sentence} text={sentence} entities={resultItem} />
-          ))}
-        </Accordion>
+        <>
+          <Accordion>
+            {[...resultData].map(([sentence, resultItem]) => (
+              <ResultItem
+                key={sentence}
+                text={sentence}
+                entities={resultItem}
+              />
+            ))}
+          </Accordion>
+          <div className="mt-4">
+            <Graph.List results={resultData} />
+          </div>
+        </>
       ) : (
         <Alert variant="warning">No results for given input.</Alert>
       )}
