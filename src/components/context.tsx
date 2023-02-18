@@ -1,19 +1,20 @@
 import { createContext, useEffect, useReducer } from 'react';
 
-import { AppContextModel, AppContextProps, AppReducer } from './types';
+import { AppContextModel, AppContextProps, AppReducer, Results } from './types';
 
 import { TEXTRAZOR as TEXTRAZOR_API_KEY } from 'apiKeys';
+import { ActionType } from './constants';
 
 import { getFileLine } from 'helpers/file';
+import { wrapPromise } from 'helpers/wrapPromise';
 import appReducer from './reducer';
 
 import TextRazor from 'services/TextRazor';
-import { ActionType } from './constants';
 
 const tr = new TextRazor(TEXTRAZOR_API_KEY);
 
 const defaultContextValues: AppContextModel = {
-  results: new Map(),
+  results: { read: () => new Map() },
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   dispatch: () => {},
 };
@@ -31,8 +32,8 @@ const AppContextProvider: React.FC<AppContextProps> = (
   useEffect(() => {
     const processData = async () => {
       const fileReader = getFileLine('data.txt');
-      const results = await tr.getTextEntities(fileReader);
-      dispatch([ActionType.setResults, results]);
+      const results = tr.getTextEntities(fileReader);
+      dispatch([ActionType.setResults, wrapPromise<Results>(results)]);
     };
     processData();
   }, []);
