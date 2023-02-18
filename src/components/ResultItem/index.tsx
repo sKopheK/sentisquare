@@ -15,7 +15,7 @@ const ResultItem: FC<ResultItemProps> = ({ text, entities }) => {
 
   return (
     <Accordion.Item eventKey={text}>
-      <Accordion.Header>
+      <Accordion.Header className={styles.wrap}>
         <TextHighlight
           content={text}
           entities={entities}

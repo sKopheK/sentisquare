@@ -5,3 +5,11 @@
   --bs-table-striped-bg: var(--bs-table-hover-bg);
   color: var(--bs-table-hover-color);
 }
+
+.wrap {
+  :global {
+    .accordion-button {
+      flex-wrap: wrap;
+    }
+  }
+}
