@@ -24,7 +24,18 @@ describe('Storage Service', () => {
     expect(StorageService.get(key)).toBe(value);
   });
 
-  it('should return null for expired value', () => {
+  it('should return same stored object', () => {
+    const key = 'lo que pasa';
+    const value = {
+      ahoj: 'svete',
+      5: 4,
+      77: null,
+    };
+    StorageService.set(key, JSON.stringify(value));
+    expect(JSON.parse(StorageService.get(key) ?? '')).toStrictEqual(value);
+  });
+
+  it('should return null and clear expired value', () => {
     const key = 'key1';
     StorageService.set(key, 'a value', -1);
     expect(StorageService.get(key)).toBeNull();

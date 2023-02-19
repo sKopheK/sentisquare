@@ -25,6 +25,7 @@ class StorageService {
       if (parsed.expiration - Date.now() > 0) {
         return parsed.data;
       }
+      this.clear(key);
     } catch {}
     return null;
   }
