@@ -1,10 +1,10 @@
 // @see https://blog.logrocket.com/react-suspense-data-fetching/
 
-export interface WrapPromise<T> {
+export interface WrappedPromise<T> {
   read: () => T;
 }
 
-export const wrapPromise = <T>(promise: Promise<T>): WrapPromise<T> => {
+export const wrapPromise = <T>(promise: Promise<T>): WrappedPromise<T> => {
   let status = 'pending';
   let response: T;
 

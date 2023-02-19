@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 
-import { WrapPromise } from 'helpers/wrapPromise';
+import { WrappedPromise } from 'helpers/wrapPromise';
 import { ActionType } from './constants';
 
 export interface AppContextProps {
@@ -8,7 +8,7 @@ export interface AppContextProps {
 }
 
 export interface AppState {
-  results: WrapPromise<Results>;
+  results: WrappedPromise<Results>;
 }
 export interface AppContextModel extends AppState {
   dispatch: Dispatch<AppAction>;
@@ -27,7 +27,7 @@ export interface NlpEntity extends Record<string, any> {
 
 export type Results = Map<string, NlpEntity[]>;
 
-export type SetResultsAction = [ActionType.setResults, WrapPromise<Results>];
+export type SetResultsAction = [ActionType.setResults, WrappedPromise<Results>];
 
 export type AppAction = SetResultsAction;
 
