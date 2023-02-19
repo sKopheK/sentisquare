@@ -2,7 +2,11 @@ import { DEFAULT_EXPIRATION } from './Storage.constants';
 import { StoredData } from './Storage.types';
 
 class StorageService {
-  public set(key: string, value: string, expiration?: number) {
+  constructor() {
+    throw new Error('StorageService has only static methods');
+  }
+
+  public static set(key: string, value: string, expiration?: number) {
     localStorage.setItem(
       key,
       JSON.stringify({
@@ -11,7 +15,7 @@ class StorageService {
       } as StoredData)
     );
   }
-  public get(key: string) {
+  public static get(key: string) {
     const stored = localStorage.getItem(key);
     if (!stored) {
       return null;
@@ -24,7 +28,7 @@ class StorageService {
     } catch {}
     return null;
   }
-  public clear(key?: string) {
+  public static clear(key?: string) {
     if (key === undefined) {
       localStorage.clear();
     } else {
