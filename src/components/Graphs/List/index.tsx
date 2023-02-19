@@ -4,7 +4,7 @@ import { Card, CardGroup } from 'react-bootstrap';
 
 import { GraphListProps } from './types';
 
-import { getAllEntities, getTypeGraphData } from './helpers';
+import { getAllEntities, getTypeGraphData } from '../helpers';
 
 import * as Graph from '..';
 
