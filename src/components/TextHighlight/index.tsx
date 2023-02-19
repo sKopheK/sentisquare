@@ -27,6 +27,8 @@ const TextHighlight: FC<TextHighlightProps> = ({
     const output: JSX.Element[] = [];
     let processedTextLen = 0;
     orderedEntities.forEach((entity) => {
+      // skipping words within already highlighted matched text
+      if (entity.startingPos < processedTextLen) return;
       output.push(
         <Fragment key={processedTextLen}>
           {content.substring(processedTextLen, entity.startingPos)}
@@ -49,9 +51,7 @@ const TextHighlight: FC<TextHighlightProps> = ({
       processedTextLen = entity.startingPos + entity.matchedText.length;
     });
     output.push(
-      <Fragment key={processedTextLen}>
-        {content.substring(processedTextLen)}
-      </Fragment>
+      <Fragment key="leftover">{content.substring(processedTextLen)}</Fragment>
     );
 
     return output;
