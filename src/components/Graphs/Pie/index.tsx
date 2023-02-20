@@ -33,7 +33,12 @@ const PieGraph: FC<PieGraphProps> = ({ data }) => {
             />
           ))}
         </Pie>
-        <Legend layout="centric" verticalAlign="bottom" iconType="wye" />
+        <Legend
+          align="left"
+          layout="vertical"
+          verticalAlign="middle"
+          iconType="wye"
+        />
         <Tooltip />
       </PieChart>
     </ResponsiveContainer>
