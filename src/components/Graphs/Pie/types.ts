@@ -1,5 +1,3 @@
-import { GraphData } from '../types';
+import { GraphProps } from '../types';
 
-export interface PieGraphProps {
-  data: GraphData;
-}
+export type PieGraphProps = GraphProps;
