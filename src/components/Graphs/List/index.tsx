@@ -4,19 +4,19 @@ import { Card, CardGroup } from 'react-bootstrap';
 
 import { GraphListProps } from './types';
 
-import { getAllEntities, getTypeGraphData } from '../helpers';
+import { getAllEntities, getFrequencyData } from '../helpers';
 
 import * as Graph from '..';
 
 const GraphList: FC<GraphListProps> = ({ results }) => {
   const entities = getAllEntities(results);
-  const typeFrequencies = getTypeGraphData(entities);
+  const typeFrequencies = getFrequencyData(entities);
 
   return (
     <CardGroup>
       <Card>
         <Card.Header>
-          <h3>Frequencies</h3>
+          <h3>Frequency</h3>
         </Card.Header>
         <Card.Body>
           <Graph.Pie data={typeFrequencies} />

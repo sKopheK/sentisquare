@@ -1,5 +1,5 @@
 import { NlpEntity } from 'components/types';
-import { getAllEntities, getTypeGraphData } from './helpers';
+import { getAllEntities, getFrequencyData } from './helpers';
 
 const mockEntities: NlpEntity[] = [
   {
@@ -59,18 +59,18 @@ describe('get all entities', () => {
   });
 });
 
-describe('type graph', () => {
+describe('frequency graph', () => {
   it('should throw on invalid input', () => {
     // @ts-expect-error invalid param type
-    expect(() => getTypeGraphData('ahoj')).toThrow();
+    expect(() => getFrequencyData('ahoj')).toThrow();
     // @ts-expect-error invalid param type
-    expect(() => getTypeGraphData()).toThrow();
+    expect(() => getFrequencyData()).toThrow();
     // @ts-expect-error invalid param type
-    expect(() => getTypeGraphData(new Map())).toThrow();
+    expect(() => getFrequencyData(new Map())).toThrow();
   });
 
   it('should prepare data for graph', () => {
-    const data = getTypeGraphData(mockEntities);
+    const data = getFrequencyData(mockEntities);
     const expectedResult = [
       { name: 'Place', value: 1 },
       { name: 'PopulatedPlace', value: 1 },

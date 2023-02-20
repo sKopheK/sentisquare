@@ -1,5 +1,5 @@
-import { getTypeGraphData } from 'components/Graphs/helpers';
+import { GraphData } from '../types';
 
 export interface PieGraphProps {
-  data: ReturnType<typeof getTypeGraphData>;
+  data: GraphData;
 }

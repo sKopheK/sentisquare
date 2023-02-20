@@ -1,10 +1,11 @@
 import { NlpEntity, Results } from 'components/types';
+import { GraphData } from './types';
 
 export const getAllEntities = (results: Results) => {
   return [...results.values()].flat();
 };
 
-export const getTypeGraphData = (entities: NlpEntity[]) => {
+export const getFrequencyData = (entities: NlpEntity[]): GraphData => {
   if (!Array.isArray(entities)) throw new Error('Invalid data');
   const frequency = new Map<string, number>();
   entities.forEach((entity) => {
