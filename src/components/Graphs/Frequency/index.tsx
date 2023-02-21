@@ -1,30 +1,50 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { Card } from 'react-bootstrap';
+import { BsPieChartFill, BsFillBarChartFill } from 'react-icons/bs';
 
-import { GraphProps } from 'components/Graphs/types';
+import { SwitchGraphType } from '../TypeSwitch/types';
+import { GraphType } from '../types';
 import { FrequencyGraphProps } from './types';
 
-import { GRAPH_TYPE_MAP, GRAPH_TYPE_STORAGE_KEY, GraphType } from './constants';
+import { GRAPH_TYPE_STORAGE_KEY } from './constants';
 
 import { getFrequencyData } from 'components/Graphs/helpers';
+import useTypeSwitch from '../TypeSwitch/hooks';
 
-import StorageService from 'services/Storage';
+import TypeSwitch from '../TypeSwitch';
+
+const frequencyGraphTypes: SwitchGraphType[] = [
+  {
+    icon: <BsPieChartFill />,
+    label: 'Pie',
+    type: GraphType.Pie,
+  },
+  // {
+  //   icon: <BsFillBarChartFill />,
+  //   label: 'Bar',
+  //   type: GraphType.Bar,
+  // },
+];
 
 const FrequencyGraph: FC<FrequencyGraphProps> = ({ entities }) => {
   const typeFrequencies = getFrequencyData(entities);
 
-  const [GraphComponent, setGraphComponent] = useState<FC<GraphProps>>(
-    () =>
-      GRAPH_TYPE_MAP[
-        StorageService.get(GRAPH_TYPE_STORAGE_KEY) as unknown as GraphType
-      ] ?? GRAPH_TYPE_MAP[GraphType.Pie]
+  const [GraphComponent, graphType, setGraphType] = useTypeSwitch(
+    GRAPH_TYPE_STORAGE_KEY,
+    GraphType.Pie
   );
 
   return (
     <Card>
-      <Card.Header>
+      <Card.Header className="d-flex justify-content-between align-center">
         <h3>Frequency</h3>
+        <TypeSwitch
+          blockId={GRAPH_TYPE_STORAGE_KEY}
+          selected={graphType}
+          setType={setGraphType}
+          types={frequencyGraphTypes}
+        />
       </Card.Header>
       <Card.Body>
         <GraphComponent data={typeFrequencies} />
