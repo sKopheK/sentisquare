@@ -1,13 +1,9 @@
 import { FC } from 'react';
-import PieGraph from './Pie';
 
 export enum GraphType {
   Pie = 'Pie',
+  Bar = 'Bar',
 }
-
-export const GRAPH_TYPE_MAP = {
-  [GraphType.Pie]: PieGraph,
-};
 
 export type GraphData = {
   name: string;

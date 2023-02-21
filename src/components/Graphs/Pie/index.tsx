@@ -12,10 +12,11 @@ import {
 import { PieGraphProps } from './types';
 
 import { GRAPH_COLORS } from '../List/constants';
+import { DEFAULT_GRAPH_HEIGHT } from '../constants';
 
 const PieGraph: FC<PieGraphProps> = ({ data }) => {
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height={DEFAULT_GRAPH_HEIGHT}>
       <PieChart>
         <Pie
           data={data}

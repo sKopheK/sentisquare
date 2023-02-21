@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { Card } from 'react-bootstrap';
-import { BsPieChartFill, BsFillBarChartFill } from 'react-icons/bs';
+import { BsFillBarChartFill, BsPieChartFill } from 'react-icons/bs';
 
 import { SwitchGraphType } from '../TypeSwitch/types';
 import { GraphType } from '../types';
@@ -10,7 +10,7 @@ import { FrequencyGraphProps } from './types';
 import { GRAPH_TYPE_STORAGE_KEY } from './constants';
 
 import { getFrequencyData } from 'components/Graphs/helpers';
-import useTypeSwitch from '../TypeSwitch/hooks';
+import useGraphType from '../TypeSwitch/hooks';
 
 import TypeSwitch from '../TypeSwitch';
 
@@ -20,17 +20,17 @@ const frequencyGraphTypes: SwitchGraphType[] = [
     label: 'Pie',
     type: GraphType.Pie,
   },
-  // {
-  //   icon: <BsFillBarChartFill />,
-  //   label: 'Bar',
-  //   type: GraphType.Bar,
-  // },
+  {
+    icon: <BsFillBarChartFill />,
+    label: 'Bar',
+    type: GraphType.Bar,
+  },
 ];
 
 const FrequencyGraph: FC<FrequencyGraphProps> = ({ entities }) => {
   const typeFrequencies = getFrequencyData(entities);
 
-  const [GraphComponent, graphType, setGraphType] = useTypeSwitch(
+  const [GraphComponent, graphType, setGraphType] = useGraphType(
     GRAPH_TYPE_STORAGE_KEY,
     GraphType.Pie
   );

@@ -1,10 +1,18 @@
 import { useCallback, useState } from 'react';
 
-import { GRAPH_TYPE_MAP, GraphComponent, GraphType } from '../types';
+import { GraphComponent, GraphType } from '../types';
 
 import StorageService from 'services/Storage';
 
-const useTypeSwitch = (
+import BarGraph from '../Bar';
+import PieGraph from '../Pie';
+
+const GRAPH_TYPE_MAP = {
+  [GraphType.Pie]: PieGraph,
+  [GraphType.Bar]: BarGraph,
+};
+
+const useGraphType = (
   key: string,
   defaultValue: GraphType
 ): [GraphComponent, GraphType, (type: GraphType) => void] => {
@@ -32,4 +40,4 @@ const useTypeSwitch = (
   return [Component, graphType, setType];
 };
 
-export default useTypeSwitch;
+export default useGraphType;
