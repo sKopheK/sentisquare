@@ -3,16 +3,17 @@ import { FC } from 'react';
 import { Card } from 'react-bootstrap';
 import { BsFillBarChartFill, BsPieChartFill } from 'react-icons/bs';
 
-import { SwitchGraphType } from '../TypeSwitch/types';
-import { GraphType } from '../types';
+import { SwitchGraphType } from 'components/Graphs/TypeSwitch/types';
+import { GraphType } from 'components/Graphs/types';
 import { FrequencyGraphProps } from './types';
 
 import { GRAPH_TYPE_STORAGE_KEY } from './constants';
 
-import { getFrequencyData } from 'components/Graphs/helpers';
-import useGraphType from '../TypeSwitch/hooks';
+import { getFrequencyData } from './helpers';
 
-import TypeSwitch from '../TypeSwitch';
+import useGraphType from 'components/Graphs/TypeSwitch/hooks';
+
+import TypeSwitch from 'components/Graphs/TypeSwitch';
 
 const frequencyGraphTypes: SwitchGraphType[] = [
   {
