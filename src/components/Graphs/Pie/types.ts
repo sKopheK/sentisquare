@@ -1,3 +1,3 @@
-import { GraphProps } from '../types';
+import { GraphProps } from 'components/Graphs/types';
 
 export type PieGraphProps = GraphProps;
