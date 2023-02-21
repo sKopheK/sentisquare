@@ -14,7 +14,7 @@ const GraphList: FC<GraphListProps> = ({ results }) => {
   const entities = getAllEntities(results);
 
   return (
-    <Row xs={1} lg={2} className="g-4">
+    <Row xs={1} md={2} xxl={3} className="g-4">
       <Col>
         <FrequencyGraph entities={entities} />
       </Col>
