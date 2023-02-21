@@ -16,7 +16,7 @@ const TypeSwitch: FC<TypeSwitchProps> = ({
   return (
     <ButtonGroup size="sm" aria-label="Graph type">
       {types.map((graphType, i) => {
-        const radioBtnId = `typeswitch-${graphType.label}`;
+        const radioBtnId = `${blockId}-typeswitch-${graphType.label}`;
         const isChecked = selected === graphType.type;
         return (
           <Button
