@@ -38,8 +38,13 @@ const FrequencyGraph: FC<FrequencyGraphProps> = ({ entities }) => {
 
   return (
     <Card>
-      <Card.Header className="d-flex justify-content-between align-center">
-        <h3>Frequency</h3>
+      <Card.Header className="d-flex justify-content-between align-items-center gap-3">
+        <div className="text-truncate">
+          <h3 className="m-0">Frequency</h3>
+          <p className="mb-0 text-muted text-truncate">
+            How many times does entity type appears in examined input.
+          </p>
+        </div>
         <TypeSwitch
           blockId={GRAPH_TYPE_STORAGE_KEY}
           selected={graphType}
