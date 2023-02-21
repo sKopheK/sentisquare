@@ -1,4 +1,4 @@
-import { DEFAULT_EXPIRATION } from './Storage.constants';
+import { DEFAULT_EXPIRATION, KEY_PREFIX } from './Storage.constants';
 import { StoredData } from './Storage.types';
 
 class StorageService {
@@ -8,7 +8,7 @@ class StorageService {
 
   public static set(key: string, value: string, expiration?: number) {
     localStorage.setItem(
-      key,
+      KEY_PREFIX + key,
       JSON.stringify({
         data: value,
         expiration: Date.now() + (expiration ?? DEFAULT_EXPIRATION),
@@ -16,7 +16,7 @@ class StorageService {
     );
   }
   public static get(key: string) {
-    const stored = localStorage.getItem(key);
+    const stored = localStorage.getItem(KEY_PREFIX + key);
     if (!stored) {
       return null;
     }
@@ -33,7 +33,7 @@ class StorageService {
     if (key === undefined) {
       localStorage.clear();
     } else {
-      localStorage.removeItem(key);
+      localStorage.removeItem(KEY_PREFIX + key);
     }
   }
 }
