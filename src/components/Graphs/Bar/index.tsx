@@ -3,6 +3,7 @@ import { FC } from 'react';
 import {
   Bar,
   BarChart,
+  Brush,
   Cell,
   ResponsiveContainer,
   Tooltip,
@@ -15,14 +16,18 @@ import { BarGraphProps } from './types';
 import { GRAPH_COLORS } from '../List/constants';
 import { DEFAULT_GRAPH_HEIGHT } from '../constants';
 
-const BarGraph: FC<BarGraphProps> = ({ data }) => {
+const BarGraph: FC<BarGraphProps> = ({
+  data,
+  interval = 1,
+  showBrush = true,
+}) => {
   return (
     <ResponsiveContainer width="100%" height={DEFAULT_GRAPH_HEIGHT}>
       <BarChart data={data}>
         <XAxis dataKey="name" />
-        <YAxis interval={1} />
+        <YAxis interval={interval} />
         <Tooltip />
-        <Bar data={data} dataKey="value">
+        <Bar dataKey="value">
           {data.map((_, index) => (
             <Cell
               key={`cell-${index}`}
@@ -30,6 +35,7 @@ const BarGraph: FC<BarGraphProps> = ({ data }) => {
             />
           ))}
         </Bar>
+        {showBrush && <Brush dataKey="name" height={25} stroke="#999" />}
       </BarChart>
     </ResponsiveContainer>
   );

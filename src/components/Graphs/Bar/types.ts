@@ -1,3 +1,7 @@
-import { GraphProps } from '../types';
+import { AxisInterval } from 'recharts/types/util/types';
+import { GraphProps } from 'components/Graphs/types';
 
-export type BarGraphProps = GraphProps;
+export interface BarGraphProps extends GraphProps {
+  interval?: AxisInterval;
+  showBrush?: boolean;
+}
