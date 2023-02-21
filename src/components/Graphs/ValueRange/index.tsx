@@ -17,7 +17,6 @@ const ValueRange: FC<ValueRangeProps> = ({
 }) => {
   return (
     <Range
-      draggableTrack
       direction={direction}
       values={values}
       step={step}
