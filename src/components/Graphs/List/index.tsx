@@ -8,6 +8,7 @@ import { getAllEntities } from 'components/Graphs/helpers';
 
 import ConfidenceGraph from 'components/Graphs/Confidence';
 import FrequencyGraph from 'components/Graphs/Frequency';
+import RelevanceGraph from 'components/Graphs/Relevance';
 
 const GraphList: FC<GraphListProps> = ({ results }) => {
   const entities = getAllEntities(results);
@@ -19,6 +20,9 @@ const GraphList: FC<GraphListProps> = ({ results }) => {
       </Col>
       <Col>
         <ConfidenceGraph entities={entities} />
+      </Col>
+      <Col>
+        <RelevanceGraph entities={entities} />
       </Col>
     </Row>
   );
