@@ -8,7 +8,7 @@ export async function* getFileLine(fileURL) {
   let { value: chunk, done: readerDone } = await reader.read();
   chunk = chunk ? utf8Decoder.decode(chunk) : '';
 
-  const re = /\n|\r|\r\n/gm;
+  const re = /\r\n|\n|\r/gm;
   let startIndex = 0;
 
   while (true) {
