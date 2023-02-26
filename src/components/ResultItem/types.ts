@@ -1,6 +1,6 @@
-import { NlpEntity } from '../types';
+import { ResultData } from 'components/types';
 
 export interface ResultItemProps {
   text: string;
-  entities: NlpEntity[];
+  entities: ResultData;
 }

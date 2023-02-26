@@ -7,13 +7,6 @@ export interface AppContextProps {
   children?: React.ReactNode;
 }
 
-export interface AppState {
-  results: WrappedPromise<Results>;
-}
-export interface AppContextModel extends AppState {
-  dispatch: Dispatch<AppAction>;
-}
-
 export interface NlpEntity extends Record<string, any> {
   id: number;
   entityId: string;
@@ -25,13 +18,36 @@ export interface NlpEntity extends Record<string, any> {
   matchedText: string;
 }
 
-export type Results = Map<string, NlpEntity[]>;
+export type ResultDataType = NlpEntity[] | string;
+export type ResultData = WrappedPromise<ResultDataType>;
+export type Result = [string, ResultData];
+export type ResultList = Result[];
 
-export type SetResultsAction = [ActionType.setResults, WrappedPromise<Results>];
+export interface AppState {
+  results: ResultList;
+  hasMoreResults: boolean;
+  fileContent: string[];
+}
+export interface AppContextModel extends AppState {
+  dispatch: Dispatch<AppAction>;
+}
 
-export type AppAction = SetResultsAction;
+export type AddResults = [ActionType.addResults, Result];
+export type SetResultsAction = [ActionType.setResults, AppState['results']];
+export type LoadMoreAction = [ActionType.loadMore];
+export type SetHasMoreResultsAction = [
+  ActionType.setHasMoreResults,
+  AppState['hasMoreResults']
+];
+export type SetAllAction = [ActionType.setAll, Partial<AppState>];
+export type ReplaceLastErrorAction = [ActionType.replaceLastError, string];
 
-export type AppReducer = (
-  prevState: AppContextModel,
-  action: AppAction
-) => AppContextModel;
+export type AppAction =
+  | AddResults
+  | SetResultsAction
+  | LoadMoreAction
+  | SetHasMoreResultsAction
+  | SetAllAction
+  | ReplaceLastErrorAction;
+
+export type AppReducer = (prevState: AppState, action: AppAction) => AppState;

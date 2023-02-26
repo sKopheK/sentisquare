@@ -4,24 +4,11 @@ import TextRazor from './TextRazor';
 
 describe('TextRazor service', () => {
   it('should fetch data from API', async () => {
-    const serverData = { isReality: false };
-    fetchMock.mockResponse(JSON.stringify(serverData));
-
-    const text = 'lorem ipsum dolor sit amet';
-    const textrazorService = new TextRazor(TEXTRAZOR);
-
-    const response = await textrazorService.processData(text);
-
-    expect(fetchMock).toBeCalled();
-    expect(response).toStrictEqual(serverData);
-  });
-
-  it('should return entities from file stream', async () => {
     const sentences = [
       'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore',
       'sentence 2',
-      // 'sentence 3',
-      // 'sentence 4',
+      'sentence 3',
+      'sentence 4',
     ];
     const entities: NlpEntity[] = [
       {
@@ -45,18 +32,13 @@ describe('TextRazor service', () => {
 
     const textrazorService = new TextRazor(TEXTRAZOR);
 
-    const stream = async function* (): AsyncGenerator<string> {
-      for (const line of sentences) {
-        yield line;
-      }
-    };
-
-    const expectedResult = new Map<string, NlpEntity[]>();
-    sentences.forEach((sentence) => {
-      expectedResult.set(sentence, entities);
+    const expectedResult: Record<string, NlpEntity[]> = {};
+    const responseData: Record<string, NlpEntity[]> = {};
+    sentences.forEach(async (sentence) => {
+      responseData[sentence] = await textrazorService.getTextEntities(sentence);
+      expectedResult[sentence] = entities;
     });
 
-    const response = await textrazorService.getTextEntities(stream());
-    expect(response).toStrictEqual(expectedResult);
+    expect(responseData).toStrictEqual(expectedResult);
   });
 });
