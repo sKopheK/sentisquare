@@ -1,8 +1,8 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { Card } from 'react-bootstrap';
 
-import { FrequencyGraphProps } from './types';
+import { RelevanceGraphProps } from './types';
 
 import {
   getDataWithinRange,
@@ -12,16 +12,21 @@ import {
 
 import BarGraph from 'components/Graphs/Bar';
 import ValueRange from '../ValueRange';
-import { MIN_VALUE } from './constants';
 import { DEFAULT_GRAPH_HEIGHT } from '../constants';
+import { HEIGHT_CORRECTION, MIN_VALUE, RANGE_STEPS_AMOUNT } from './constants';
 
-const RelevanceGraph: FC<FrequencyGraphProps> = ({ entities }) => {
+const RelevanceGraph: FC<RelevanceGraphProps> = ({ entities }) => {
   const relevanceData = getRelevanceData(entities);
   const maxValue = getMaximumValue(relevanceData);
 
-  const [values, setValues] = useState([MIN_VALUE, maxValue]);
+  const [range, setRange] = useState([MIN_VALUE, maxValue]);
 
-  const filteredData = getDataWithinRange(relevanceData, values[0], values[1]);
+  useEffect(() => {
+    setRange([MIN_VALUE, maxValue]);
+  }, [maxValue]);
+
+  const filteredData = getDataWithinRange(relevanceData, range[0], range[1]);
+  const step = (maxValue - MIN_VALUE) / RANGE_STEPS_AMOUNT;
 
   return (
     <Card>
@@ -31,18 +36,24 @@ const RelevanceGraph: FC<FrequencyGraphProps> = ({ entities }) => {
           Relevance this entity has to the source text, scale 0-1.
         </p>
       </Card.Header>
-      <Card.Body className="d-flex align-items-start">
-        <div className="ms-3 pt-1">
-          <ValueRange
-            min={MIN_VALUE}
-            max={maxValue}
-            setValues={setValues}
-            step={0.1}
-            values={values}
-            height={DEFAULT_GRAPH_HEIGHT * 0.78}
-          />
-        </div>
-        <BarGraph data={filteredData} interval={0} />
+      <Card.Body className="d-flex align-items-start position-relative">
+        {filteredData.length > 0 && (
+          <div className="ms-3 pt-1">
+            <ValueRange
+              min={MIN_VALUE}
+              max={maxValue}
+              setValues={setRange}
+              step={step}
+              values={range}
+              height={DEFAULT_GRAPH_HEIGHT * HEIGHT_CORRECTION}
+            />
+          </div>
+        )}
+        <BarGraph
+          data={filteredData}
+          interval={0}
+          yAxisDomain={['auto', maxValue]}
+        />
       </Card.Body>
     </Card>
   );

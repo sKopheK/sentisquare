@@ -1,5 +1,5 @@
 import { NlpEntity } from 'components/types';
 
-export interface FrequencyGraphProps {
+export interface RelevanceGraphProps {
   entities: NlpEntity[];
 }
