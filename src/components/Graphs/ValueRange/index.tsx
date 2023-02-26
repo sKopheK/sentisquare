@@ -19,6 +19,8 @@ const ValueRange: FC<ValueRangeProps> = ({
     <Range
       direction={direction}
       values={values}
+      // might print out warning "The `values` property is in conflict with the current `step`, `min`, and `max` properties."
+      // https://github.com/tajo/react-range/pull/58
       step={step}
       min={min}
       max={max}
