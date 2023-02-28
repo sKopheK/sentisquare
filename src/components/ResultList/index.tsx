@@ -3,6 +3,8 @@ import { FC, Suspense, useContext } from 'react';
 import { Alert, Button, Spinner } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import { ErrorBoundary } from 'react-error-boundary';
+import { FaArrowAltCircleDown } from 'react-icons/fa';
+import { ImFileEmpty } from 'react-icons/im';
 
 import { ActionType } from 'components/constants';
 
@@ -21,6 +23,23 @@ const ResultList: FC = () => {
 
   return (
     <>
+      {!isResultsLoaded && !hasMoreResults && (
+        <Alert variant="warning" className="mb-0">
+          <div className="d-flex align-items-center gap-2">
+            <ImFileEmpty /> No data available
+          </div>
+        </Alert>
+      )}
+
+      {!isResultsLoaded && hasMoreResults && (
+        <Alert variant="info" className="mb-0">
+          <div className="d-flex align-items-center gap-2">
+            <FaArrowAltCircleDown />
+            Click the button to load first set of results
+          </div>
+        </Alert>
+      )}
+
       {isResultsLoaded && (
         <>
           <Accordion>

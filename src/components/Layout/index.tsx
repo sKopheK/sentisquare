@@ -3,6 +3,7 @@ import { FC } from 'react';
 import cx from 'classnames';
 import { Badge, Card } from 'react-bootstrap';
 
+import Data from 'components/Data';
 import ResultList from 'components/ResultList';
 
 import styles from './styles.module.scss';
@@ -16,6 +17,12 @@ const Layout: FC = () => {
           v{process.env.REACT_APP_VERSION}
         </Badge>
       </h1>
+      <Card className="mb-3">
+        <Card.Header className="h2">Data</Card.Header>
+        <Card.Body>
+          <Data />
+        </Card.Body>
+      </Card>
       <Card>
         <Card.Header className="h2">Results</Card.Header>
         <Card.Body>
