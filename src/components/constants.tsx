@@ -4,4 +4,5 @@ export enum ActionType {
   loadMore = 'loadMore',
   setAll = 'setAll',
   replaceLastError = 'replaceLastError',
+  setFileContent = 'setFileContent',
 }

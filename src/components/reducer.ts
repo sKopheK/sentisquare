@@ -24,6 +24,7 @@ const appReducer: AppReducer = (state, [type, payload]) => {
       return {
         ...state,
         results: payload,
+        hasMoreResults: Object.keys(payload).length < state.fileContent.length,
       };
     case ActionType.replaceLastError:
       const results = [...state.results];
@@ -35,6 +36,13 @@ const appReducer: AppReducer = (state, [type, payload]) => {
           ...results,
           [lastError[0], wrapPromise(Promise.resolve(payload))],
         ],
+      };
+    case ActionType.setFileContent:
+      return {
+        ...state,
+        fileContent: payload,
+        results: [],
+        hasMoreResults: payload.length > 0,
       };
   }
 

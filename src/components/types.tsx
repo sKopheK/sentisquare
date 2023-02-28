@@ -35,19 +35,16 @@ export interface AppContextModel extends AppState {
 export type AddResults = [ActionType.addResults, Result];
 export type SetResultsAction = [ActionType.setResults, AppState['results']];
 export type LoadMoreAction = [ActionType.loadMore];
-export type SetHasMoreResultsAction = [
-  ActionType.setHasMoreResults,
-  AppState['hasMoreResults']
-];
 export type SetAllAction = [ActionType.setAll, Partial<AppState>];
 export type ReplaceLastErrorAction = [ActionType.replaceLastError, string];
+export type SetFileContentAction = [ActionType.setFileContent, string[]];
 
 export type AppAction =
   | AddResults
   | SetResultsAction
   | LoadMoreAction
-  | SetHasMoreResultsAction
   | SetAllAction
-  | ReplaceLastErrorAction;
+  | ReplaceLastErrorAction
+  | SetFileContentAction;
 
 export type AppReducer = (prevState: AppState, action: AppAction) => AppState;
