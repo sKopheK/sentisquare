@@ -38,6 +38,7 @@ export type LoadMoreAction = [ActionType.loadMore];
 export type SetAllAction = [ActionType.setAll, Partial<AppState>];
 export type ReplaceLastErrorAction = [ActionType.replaceLastError, string];
 export type SetFileContentAction = [ActionType.setFileContent, string[]];
+export type ResetAction = [ActionType.reset];
 
 export type AppAction =
   | AddResults
@@ -45,6 +46,7 @@ export type AppAction =
   | LoadMoreAction
   | SetAllAction
   | ReplaceLastErrorAction
-  | SetFileContentAction;
+  | SetFileContentAction
+  | ResetAction;
 
 export type AppReducer = (prevState: AppState, action: AppAction) => AppState;

@@ -1,6 +1,6 @@
 import { AppReducer, ResultList } from './types';
 
-import { ActionType } from './constants';
+import { ActionType, defaultState } from './constants';
 
 import { wrapPromise } from 'helpers/wrapPromise';
 
@@ -43,6 +43,10 @@ const appReducer: AppReducer = (state, [type, payload]) => {
         fileContent: payload,
         results: [],
         hasMoreResults: payload.length > 0,
+      };
+    case ActionType.reset:
+      return {
+        ...defaultState,
       };
   }
 
