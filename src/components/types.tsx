@@ -37,7 +37,10 @@ export type SetResultsAction = [ActionType.setResults, AppState['results']];
 export type LoadMoreAction = [ActionType.loadMore];
 export type SetAllAction = [ActionType.setAll, Partial<AppState>];
 export type ReplaceLastErrorAction = [ActionType.replaceLastError, string];
-export type SetFileContentAction = [ActionType.setFileContent, string[]];
+export type SetFileContentAction = [
+  ActionType.setFileContent,
+  AppState['fileContent']
+];
 export type ResetAction = [ActionType.reset];
 
 export type AppAction =
