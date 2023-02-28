@@ -1,4 +1,4 @@
-import { AppReducer } from './types';
+import { AppReducer, ResultList } from './types';
 
 import { ActionType } from './constants';
 
@@ -13,19 +13,17 @@ const appReducer: AppReducer = (state, [type, payload]) => {
       };
     case ActionType.addResults:
       const [key, value] = payload;
+      const updatedResults: ResultList = [...state.results, [key, value]];
       return {
         ...state,
-        results: [...state.results, [key, value]],
+        results: updatedResults,
+        hasMoreResults:
+          Object.keys(updatedResults).length < state.fileContent.length,
       };
     case ActionType.setResults:
       return {
         ...state,
         results: payload,
-      };
-    case ActionType.setHasMoreResults:
-      return {
-        ...state,
-        hasMoreResults: payload,
       };
     case ActionType.replaceLastError:
       const results = [...state.results];

@@ -40,11 +40,6 @@ const AppContextProvider: FC<AppContextProps> = (props: AppContextProps) => {
             ActionType.addResults,
             [text, wrapPromise(textRazor.getTextEntities(text))],
           ]);
-          const updatedState = getState();
-          next([
-            ActionType.setHasMoreResults,
-            Object.keys(updatedState.results).length < state.fileContent.length,
-          ]);
           return;
       }
       return next(action);
