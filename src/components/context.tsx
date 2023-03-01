@@ -1,11 +1,10 @@
-import { FC, createContext, useEffect } from 'react';
+import { FC, createContext } from 'react';
 
 import { AppAction, AppContextModel, AppContextProps, AppState } from './types';
 
 import { TEXTRAZOR as TEXTRAZOR_API_KEY } from 'apiKeys';
 import { ActionType, defaultState } from './constants';
 
-import { getFileLine } from 'helpers/file';
 import { wrapPromise } from 'helpers/wrapPromise';
 import appReducer from './reducer';
 
@@ -47,19 +46,6 @@ const AppContextProvider: FC<AppContextProps> = (props: AppContextProps) => {
     defaultContextValues,
     [appMiddleware]
   );
-
-  useEffect(() => {
-    const processData = async () => {
-      // TEMP
-      const fileReader = getFileLine('data.txt');
-      const content = [];
-      for await (const line of fileReader) {
-        content.push(line.trim());
-      }
-      dispatch([ActionType.setFileContent, content]);
-    };
-    processData();
-  }, []);
 
   const contextValue = { ...state, dispatch };
 
