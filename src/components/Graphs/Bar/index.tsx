@@ -21,9 +21,10 @@ const BarGraph: FC<BarGraphProps> = ({
   interval = 1,
   showBrush = true,
   yAxisDomain,
+  width = '100%',
 }) => {
   return (
-    <ResponsiveContainer width="100%" height={DEFAULT_GRAPH_HEIGHT}>
+    <ResponsiveContainer width={width} height={DEFAULT_GRAPH_HEIGHT}>
       {data.length > 0 ? (
         <BarChart data={data}>
           <XAxis dataKey="name" fontSize={10} />

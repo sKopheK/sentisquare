@@ -36,7 +36,7 @@ const RelevanceGraph: FC<RelevanceGraphProps> = ({ entities }) => {
           Relevance this entity has to the source text, scale 0-1.
         </p>
       </Card.Header>
-      <Card.Body className="d-flex align-items-start position-relative">
+      <Card.Body className="d-flex align-items-start">
         {filteredData.length > 0 && (
           <div className="ms-3 pt-1">
             <ValueRange
@@ -53,6 +53,7 @@ const RelevanceGraph: FC<RelevanceGraphProps> = ({ entities }) => {
           data={filteredData}
           interval={0}
           yAxisDomain={['auto', maxValue]}
+          width="95%" // ReCharts' ResponsiveContainer FIX - does not work as expected, overflows container
         />
       </Card.Body>
     </Card>

@@ -5,4 +5,5 @@ export interface BarGraphProps extends GraphProps {
   interval?: AxisInterval;
   showBrush?: boolean;
   yAxisDomain?: AxisDomain;
+  width?: string;
 }
