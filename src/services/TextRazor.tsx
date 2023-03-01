@@ -11,6 +11,11 @@ class TextRazor {
   }
 
   async getTextEntities(text: string) {
+    if (!text.trim()) {
+      return new Promise<NlpEntity[]>((_, reject) =>
+        reject(new Error('empty line'))
+      );
+    }
     return new Promise<NlpEntity[]>((resolve, reject) =>
       this.apiService
         .post(
