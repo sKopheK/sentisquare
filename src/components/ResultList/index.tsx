@@ -53,7 +53,7 @@ const ResultList: FC = () => {
               >
                 <Suspense
                   fallback={
-                    <div className="d-flex align-center h3">
+                    <div className="d-flex align-center h3 p-3">
                       <Spinner
                         animation="border"
                         role="status"
