@@ -6,3 +6,16 @@ import '@testing-library/jest-dom';
 import fetchMock from 'jest-fetch-mock';
 
 fetchMock.enableMocks();
+
+class MockResizeObserver {
+  observe() {
+    // do nothing
+  }
+  unobserve() {
+    // do nothing
+  }
+  disconnect() {
+    // do nothing
+  }
+}
+window.ResizeObserver = MockResizeObserver;

@@ -26,20 +26,22 @@ const BarGraph: FC<BarGraphProps> = ({
   return (
     <ResponsiveContainer width={width} height={DEFAULT_GRAPH_HEIGHT}>
       {data.length > 0 ? (
-        <BarChart data={data}>
-          <XAxis dataKey="name" fontSize={10} />
-          <YAxis interval={interval} domain={yAxisDomain} />
-          <Tooltip />
-          <Bar dataKey="value">
-            {data.map((_, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={GRAPH_COLORS[index % GRAPH_COLORS.length]}
-              />
-            ))}
-          </Bar>
-          {showBrush && <Brush dataKey="name" height={25} stroke="#999" />}
-        </BarChart>
+        <div data-testid="bar-graph">
+          <BarChart data={data}>
+            <XAxis dataKey="name" fontSize={10} />
+            <YAxis interval={interval} domain={yAxisDomain} />
+            <Tooltip />
+            <Bar dataKey="value">
+              {data.map((_, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={GRAPH_COLORS[index % GRAPH_COLORS.length]}
+                />
+              ))}
+            </Bar>
+            {showBrush && <Brush dataKey="name" height={25} stroke="#999" />}
+          </BarChart>
+        </div>
       ) : (
         <div style={{ height: DEFAULT_GRAPH_HEIGHT + 'px' }}>
           <div className="position-absolute top-50 start-50 translate-middle">
