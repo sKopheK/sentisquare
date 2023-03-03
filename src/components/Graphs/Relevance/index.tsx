@@ -4,6 +4,9 @@ import { Card } from 'react-bootstrap';
 
 import { RelevanceGraphProps } from './types';
 
+import { DEFAULT_GRAPH_HEIGHT } from '../constants';
+import { HEIGHT_CORRECTION, MIN_VALUE, RANGE_STEPS_AMOUNT } from './constants';
+
 import {
   getDataWithinRange,
   getMaximumValue,
@@ -12,8 +15,6 @@ import {
 
 import BarGraph from 'components/Graphs/Bar';
 import ValueRange from '../ValueRange';
-import { DEFAULT_GRAPH_HEIGHT } from '../constants';
-import { HEIGHT_CORRECTION, MIN_VALUE, RANGE_STEPS_AMOUNT } from './constants';
 
 const RelevanceGraph: FC<RelevanceGraphProps> = ({ entities }) => {
   const relevanceData = getRelevanceData(entities);
