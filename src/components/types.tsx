@@ -13,7 +13,7 @@ export interface NlpEntity extends Record<string, any> {
   type?: string[];
   confidenceScore: number;
   relevanceScore: number;
-  wikiLink: string;
+  wikiLink?: string;
   startingPos: number;
   matchedText: string;
 }
