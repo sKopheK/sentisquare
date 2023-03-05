@@ -1,9 +1,10 @@
 import { FC, Fragment, MutableRefObject, useMemo, useRef } from 'react';
 
-import { orderEntities } from './helpers';
+import { NlpEntity } from 'components/types';
 import { TextHighlightProps } from './types';
 
-import { NlpEntity } from 'components/types';
+import { orderEntities } from './helpers';
+
 import styles from './styles.module.scss';
 
 const TextHighlight: FC<TextHighlightProps> = ({
