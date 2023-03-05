@@ -63,7 +63,11 @@ const ResultList: FC = () => {
                     </div>
                   }
                 >
-                  <ResultItem text={sentence} entities={entries} />
+                  <ResultItem
+                    accordionEventKey={String(i)}
+                    content={sentence}
+                    entity={entries}
+                  />
                 </Suspense>
               </ErrorBoundary>
             ))}

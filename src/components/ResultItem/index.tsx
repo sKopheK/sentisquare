@@ -11,20 +11,24 @@ import TextHighlight from 'components/TextHighlight';
 
 import styles from './styles.module.scss';
 
-const ResultItem: FC<ResultItemProps> = ({ text, entities }) => {
+const ResultItem: FC<ResultItemProps> = ({
+  entity,
+  content,
+  accordionEventKey,
+}) => {
   const [highlightedEntity, setHighlightedEntity] = useState<NlpEntity>();
 
-  const entityData = entities.read();
+  const entityData = entity.read();
 
   return (
     <>
       {!Array.isArray(entityData) ? (
         <ErrorMessage error={{ name: '', message: entityData }} />
       ) : (
-        <Accordion.Item eventKey={text}>
+        <Accordion.Item eventKey={accordionEventKey}>
           <Accordion.Header as="h3" className={styles.wrap}>
             <TextHighlight
-              content={text}
+              content={content}
               entities={entityData}
               highlightedEntity={highlightedEntity}
               setHighlightedEntity={setHighlightedEntity}
