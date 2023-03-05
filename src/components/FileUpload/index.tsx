@@ -34,11 +34,14 @@ const FileUpload: FC = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <div {...getRootProps()} className={styles.dropzone}>
-      <input {...getInputProps({ multiple: false })} />
+    <div {...getRootProps()} className={styles.dropzone} data-testid="dropzone">
+      <input
+        {...getInputProps({ multiple: false })}
+        data-testid="file-upload"
+      />
       <div className={cx(styles.hint, { [styles.active]: isDragActive })}>
         {isDragActive ? (
-          <>Drop the files here ...</>
+          <div data-testid="drag-active">Drop the files here...</div>
         ) : (
           <>Drag and drop some files here, or click to select files</>
         )}
