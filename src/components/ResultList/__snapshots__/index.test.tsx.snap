@@ -1,0 +1,457 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultList component should display correct elements in case results are loaded 1`] = `
+<DocumentFragment>
+  <div
+    class="accordion"
+  >
+    <div
+      class="accordion-item"
+    >
+      <h3
+        class="wrap accordion-header"
+      >
+        <button
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          type="button"
+        >
+          <mark
+            class="entity"
+          >
+            Test
+          </mark>
+           to 
+          <mark
+            class="entity"
+          >
+            analyze
+          </mark>
+        </button>
+      </h3>
+      <div
+        class="accordion-collapse collapse"
+      >
+        <div
+          class="accordion-body"
+        >
+          <table
+            class="table table-striped table-bordered table-hover"
+          >
+            <thead>
+              <tr>
+                <th>
+                  #
+                </th>
+                <th>
+                  Entity
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Confidence Score
+                </th>
+                <th>
+                  Relevance Score
+                </th>
+                <th>
+                  Link
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class=""
+              >
+                <td>
+                  5
+                </td>
+                <td>
+                  analyze
+                </td>
+                <td />
+                <td>
+                  5
+                </td>
+                <td>
+                  0.0297
+                </td>
+                <td>
+                  <a
+                    href="https://www.google.com"
+                  >
+                    Wiki
+                  </a>
+                </td>
+              </tr>
+              <tr
+                class=""
+              >
+                <td>
+                  5
+                </td>
+                <td>
+                  test
+                </td>
+                <td />
+                <td>
+                  1
+                </td>
+                <td>
+                  2.45
+                </td>
+                <td>
+                  <a
+                    href="https://www.seznam.cz"
+                  >
+                    Wiki
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div
+      class="accordion-item"
+    >
+      <h3
+        class="wrap accordion-header"
+      >
+        <button
+          aria-expanded="false"
+          class="accordion-button collapsed"
+          type="button"
+        >
+          <mark
+            class="entity"
+          >
+            More
+          </mark>
+           tex
+          <mark
+            class="entity"
+          >
+            t
+          </mark>
+        </button>
+      </h3>
+      <div
+        class="accordion-collapse collapse"
+      >
+        <div
+          class="accordion-body"
+        >
+          <table
+            class="table table-striped table-bordered table-hover"
+          >
+            <thead>
+              <tr>
+                <th>
+                  #
+                </th>
+                <th>
+                  Entity
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Confidence Score
+                </th>
+                <th>
+                  Relevance Score
+                </th>
+                <th>
+                  Link
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                class=""
+              >
+                <td>
+                  5
+                </td>
+                <td>
+                  analyze
+                </td>
+                <td />
+                <td>
+                  5
+                </td>
+                <td>
+                  0.0297
+                </td>
+                <td>
+                  <a
+                    href="https://www.google.com"
+                  >
+                    Wiki
+                  </a>
+                </td>
+              </tr>
+              <tr
+                class=""
+              >
+                <td>
+                  5
+                </td>
+                <td>
+                  test
+                </td>
+                <td />
+                <td>
+                  1
+                </td>
+                <td>
+                  2.45
+                </td>
+                <td>
+                  <a
+                    href="https://www.seznam.cz"
+                  >
+                    Wiki
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    class="mt-3 btn btn-primary"
+    type="button"
+  >
+    Load more
+  </button>
+  <div
+    class="mt-4"
+  >
+    <div
+      class="g-4 row row-cols-xxl-3 row-cols-md-2 row-cols-1"
+    >
+      <div
+        class="col"
+      >
+        <div
+          class="card"
+        >
+          <div
+            class="d-flex justify-content-between align-items-center gap-3 card-header"
+          >
+            <div
+              class="text-truncate"
+            >
+              <h3
+                class="m-0"
+              >
+                Frequency
+              </h3>
+              <p
+                class="mb-0 text-muted text-truncate"
+              >
+                How many times does entity type appears in examined input.
+              </p>
+            </div>
+            <div
+              aria-label="Graph type"
+              class="btn-group btn-group-sm"
+              role="group"
+            >
+              <button
+                class="p-0 btn btn-dark"
+                type="button"
+              >
+                <input
+                  checked=""
+                  class="btn-check"
+                  data-testid="Pie"
+                  id="frequencyGraphType-typeswitch-Pie"
+                  name="frequencyGraphType-typeswitch"
+                  type="checkbox"
+                />
+                <label
+                  aria-label="Pie"
+                  class="icon p-2 h-100"
+                  for="frequencyGraphType-typeswitch-Pie"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 16 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"
+                    />
+                  </svg>
+                </label>
+              </button>
+              <button
+                class="p-0 btn btn-outline-dark"
+                type="button"
+              >
+                <input
+                  class="btn-check"
+                  data-testid="Bar"
+                  id="frequencyGraphType-typeswitch-Bar"
+                  name="frequencyGraphType-typeswitch"
+                  type="checkbox"
+                />
+                <label
+                  aria-label="Bar"
+                  class="icon p-2 h-100"
+                  for="frequencyGraphType-typeswitch-Bar"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="1em"
+                    stroke="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 16 16"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"
+                    />
+                  </svg>
+                </label>
+              </button>
+            </div>
+          </div>
+          <div
+            class="card-body"
+          >
+            <div
+              class="recharts-responsive-container"
+              style="width: 100%; height: 300px;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="col"
+      >
+        <div
+          class="card"
+        >
+          <div
+            class="card-header"
+          >
+            <h3
+              class="m-0"
+            >
+              Confidence
+            </h3>
+            <p
+              class="mb-0 text-muted text-truncate"
+            >
+              The confidence that TextRazor is correct that this is a valid entity.
+            </p>
+          </div>
+          <div
+            class="card-body"
+          >
+            <div
+              class="recharts-responsive-container"
+              style="width: 100%; height: 300px;"
+            >
+              <div
+                data-testid="bar-graph"
+                height="300"
+                style=""
+                width="0"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col"
+      >
+        <div
+          class="card"
+        >
+          <div
+            class="card-header"
+          >
+            <h3
+              class="m-0"
+            >
+              Relevance
+            </h3>
+            <p
+              class="mb-0 text-muted text-truncate"
+            >
+              Relevance this entity has to the source text, scale 0-1.
+            </p>
+          </div>
+          <div
+            class="d-flex align-items-start card-body"
+          >
+            <div
+              class="ms-3 pt-1"
+            >
+              <div
+                style="transform: scale(1); cursor: inherit; flex-grow: 1; width: 10px; display: flex; height: 234px;"
+              >
+                <div
+                  style="width: 5px; height: 100%; border-radius: 4px; align-self: center;"
+                >
+                  <div
+                    aria-valuemax="2.45"
+                    aria-valuemin="0"
+                    aria-valuenow="0"
+                    draggable="false"
+                    role="slider"
+                    style="position: absolute; z-index: 0; cursor: grab; user-select: none; height: 16px; width: 16px; border-radius: 50%; background-color: rgb(255, 255, 255); display: flex; justify-content: center; align-items: center; box-shadow: 0px 2px 6px #AAA; transform: translate(NaNpx, NaNpx);"
+                    tabindex="0"
+                  >
+                    <div
+                      style="width: 5.6px; height: 5px; background-color: rgb(204, 204, 204);"
+                    />
+                  </div>
+                  <div
+                    aria-valuemax="2.45"
+                    aria-valuemin="0"
+                    aria-valuenow="2.45"
+                    draggable="false"
+                    role="slider"
+                    style="position: absolute; z-index: 1; cursor: grab; user-select: none; height: 16px; width: 16px; border-radius: 50%; background-color: rgb(255, 255, 255); display: flex; justify-content: center; align-items: center; box-shadow: 0px 2px 6px #AAA; transform: translate(NaNpx, NaNpx);"
+                    tabindex="0"
+                  >
+                    <div
+                      style="width: 5.6px; height: 5px; background-color: rgb(204, 204, 204);"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="recharts-responsive-container"
+              style="width: 95%; height: 300px;"
+            >
+              <div
+                data-testid="bar-graph"
+                height="300"
+                style=""
+                width="0"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
