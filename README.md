@@ -1,4 +1,9 @@
-# SentiSquare FE challenge
+# SentiSquare FE Challenge
+
+## Disclaimer
+In order to run the application, you need to provide key to access TextRazor API. Please add `/src/apiKeys.ts` file with your API key (check https://www.textrazor.com/console for more info), you can copy it from example available in `/src/apiKeys.example.ts`.
+
+→ ~ ~
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
